@@ -1,0 +1,94 @@
+h1 {
+  color: white; 
+  font-size: 42pt !important;
+}
+
+.count-name {
+  color: white;
+  font-size: smaller;
+}
+
+.logo {
+  color: white !important;
+  font-size: 16pt !important;
+}
+
+.Navbar {
+  background: white !important;
+  /* opacity: 50% !important; */
+  border: 1px red solid !important;
+}
+
+.jumbotron {
+  height: 43vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* padding-top: 15% !important; */
+  text-align: center;
+  background: #1a2980; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #1a2980, #26d0ce); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #1a2980, #26d0ce);
+}
+
+.count-container {
+  padding-top:40px;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+/* .text-box-container {
+
+} */
+
+.text-box {
+  height: 38vh;
+  border-radius: 8px;
+  overflow: scroll;
+  border: lightgrey 1px solid;
+  padding: 35px;
+  margin-bottom: 10px;
+  overflow-y: scroll !important;
+  line-height: 40pt;
+  font-size: 20pt;
+}
+
+.search-bar {
+  width: 90% !important;
+  border: blue 1px solid;
+}
+
+.gallery {
+  padding: 0px 25px 0px 25px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border: blue 1px solid;
+}
+
+.card-container {
+  margin: 8px;
+}
+
+.card-title {
+  font-size: 14pt !important;
+}
+
+.filter-container {
+  padding: 0px 30px 40px 30px;
+  display: flex;
+  flex-direction: row;
+
+}
+
+#filter {
+  margin-right: 10px;
+}
+
+#sort {
+  margin-right: 10px;
+}
