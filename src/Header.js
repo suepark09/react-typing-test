@@ -6,14 +6,44 @@ class Header extends React.Component {
 
     constructor (props) {
         super(props);
-        this.state = { time: '1:00' };
+        this.state = {
+            seconds: '60',
+            symbols: 0
+        }
+        this.startCountDown = this.startCountDown.bind(this);
+        this.tick = this.tick.bind(this);
       }    
 
-      decreaseTime = () => {
-        this.setState({ time: this.state.time - 1 })
-      }
+tick () {
+       
+            const { seconds } = this.state
+            
+            if (seconds > 0) {
+                this.setState(({ seconds }) => ({
+                    seconds: seconds - 1
+                }))
+            }
+
+            if (seconds === 0) {
+                clearInterval(this.intervalHandle);
+                alert(
+                `you type with a speed of ${this.state.symbols} WPM`
+                )
+            }
+
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.myInterval)
+    }
+
+      startCountDown() {
+            this.intervalHandle = setInterval(this.tick, 1000);
+        }
 
     render() {
+    
+    const { seconds }  = this.state
       return  <Jumbotron fluid className="jumbotron justify-content-center">
       <Container className="count-container">
         <Row className="char-count justify-content-md-center">
@@ -29,7 +59,8 @@ class Header extends React.Component {
         </Row>
          <Row>
             <Col>
-            <h1>{ this.state.time }</h1><p className= "count-name">TIME</p>
+    <h1>{ seconds < 10 ? `0${seconds}` : seconds }</h1><p className= "count-name">TIME</p>
+    <button onClick={this.startCountDown}>Test Timer</button>
             </Col>
 
         </Row>
@@ -37,5 +68,6 @@ class Header extends React.Component {
     </Jumbotron>
     }
   }
+
   
 export default Header;

@@ -36,30 +36,40 @@ h1 {
 }
 
 .search-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+
+  /* border: 1px solid red; */
 }
 
 /* .text-box-container {
 
 } */
 
-.text-box {
-  height: 38vh;
+/* .text-box {
+  height: 20vh;
   border-radius: 8px;
   overflow: scroll;
-  border: lightgrey 1px solid;
-  padding: 35px;
+  border: blue 1px solid !important;
+  padding: 20px;
   margin-bottom: 10px;
-  overflow-y: scroll !important;
-  line-height: 40pt;
-  font-size: 20pt;
-}
+  line-height: 42pt;
+  font-size: 22pt;
+} */
 
 .search-bar {
   width: 90% !important;
   border: blue 1px solid;
+}
+
+.results-modal {
+  height: 200px;
+  width: 400px;
+  border: solid red 1px;
+}
+
+.form-control {
+  /* width: 70vw !important; */
+  height: 70px !important;
+  font-size: 12pt !important;
 }
 
 .gallery {
