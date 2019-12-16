@@ -1,5 +1,6 @@
 import React from 'react';
-import './App.css'
+import './App.css';
+import Input from './Input';
 import {Jumbotron, Container, Row, Col} from 'react-bootstrap';
 
 class Header extends React.Component {
@@ -8,7 +9,8 @@ class Header extends React.Component {
         super(props);
         this.state = {
             seconds: '60',
-            symbols: 0
+            words: 0,
+            started: false
         }
         this.startCountDown = this.startCountDown.bind(this);
         this.tick = this.tick.bind(this);
@@ -38,34 +40,42 @@ tick () {
     }
 
       startCountDown() {
-            this.intervalHandle = setInterval(this.tick, 1000);
+            if(!this.state.started) {
+                this.setState({started: true});
+                this.intervalHandle = setInterval(this.tick, 1000);
+            }          
         }
 
     render() {
     
     const { seconds }  = this.state
-      return  <Jumbotron fluid className="jumbotron justify-content-center">
-      <Container className="count-container">
-        <Row className="char-count justify-content-md-center">
-            <Col xs lg="2">
-                <h1>0</h1><p className= "count-name">WORDS/MIN</p>
-            </Col>
-            <Col  xs lg="2">
-                <h1>0</h1><p className= "count-name">CHAR/MIN</p>
-            </Col>
-            <Col xs lg="2">
-                <h1>0</h1><p className= "count-name">% ACCURACY</p>
-            </Col>
-        </Row>
-         <Row>
-            <Col>
-    <h1>{ seconds < 10 ? `0${seconds}` : seconds }</h1><p className= "count-name">TIME</p>
-    <button onClick={this.startCountDown}>Test Timer</button>
-            </Col>
-
-        </Row>
-      </Container>
-    </Jumbotron>
+    const { words } = this.state
+    // const userInput = props.userInput.split('')
+    console.log('yo is this')
+      return  <React.Fragment>
+          <Jumbotron fluid className="jumbotron justify-content-center">
+            <Container className="count-container">
+                <Row className="char-count justify-content-md-center">
+                    < Col xs lg="2">
+                        <h1>{ words }</h1><p className= "count-name">WORDS/MIN</p>
+                    </Col>
+                    <Col xs lg="2">
+                        <h1>0</h1><p className= "count-name">CHAR/MIN</p>
+                    </Col>
+                    <Col xs lg="2">
+                        <h1>0</h1><p className= "count-name">% ACCURACY</p>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <h1>{ seconds < 10 ? `0${seconds}` : seconds }</h1><p className= "count-name">TIME</p>
+                        {/* <button onClick={this.startCountDown}>Test Timer</button> */}
+                     </Col>
+                </Row>
+            </Container>
+        </Jumbotron>
+        <Input countDown={ this.startCountDown } />
+      </React.Fragment>
     }
   }
 

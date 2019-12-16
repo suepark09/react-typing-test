@@ -1,10 +1,11 @@
 import React from 'react';
 import {Container, Row} from 'react-bootstrap';
 import Text from './Text';
+import getText from './getText';
 import './App.css';
 
 const initialState = {
-    text: 'Hello world',
+    text: getText(),
     userInput: '',
     symbols: 0
 }
@@ -23,19 +24,15 @@ class Input extends React.Component {
             this.setState({
                 userInput: value
             })
-
-            //somehow grab trigger for starting the timer in header component
+            this.props.countDown()
         }
 
-        // handleSubmit(e) {
-        //     console.log('something has been submitted')
-        //     e.preventDefault()
-        // }
-    
-        //CREATING TEXT SECTION WHERE YOU TYPE
+    //!!!! BELOW IS THE BOX SECTION WHERE YOU START TYPING !!!!!
+
     render() {
 
-      return  <Container className="text-box-container">
+      return  <React.Fragment>
+          <Container className="text-box-container">
         <Row className="search-container">
         <Text className="text-box" text={this.state.text} userInput={this.state.userInput}/>
         <textarea
@@ -51,6 +48,7 @@ class Input extends React.Component {
         </div>
         </Row>
       </Container>
+      </React.Fragment>
     }
   }
   
